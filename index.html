@@ -1,15 +1,18 @@
-
-<style>
-@import url('https://fonts.googleapis.com/css2?family=Raleway:wght@300;400;500;600;700&family=Cormorant+Garamond:ital,wght@1,400;1,500&display=swap');
-
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Evaluación Mensual — Somos Amalia</title>
+<link href="https://fonts.googleapis.com/css2?family=Raleway:wght@300;400;500;600;700&family=Cormorant+Garamond:ital,wght@1,400;1,500&display=swap" rel="stylesheet">
+<script type="text/javascript" src="https://gc.kis.v2.scr.kaspersky-labs.com/FD126C42-EBFA-4E12-B309-BB3FDD723AC1/main.js?attr=l0OZ5QDQDdcILME0NomXMgBDyHl4TuaEIeJImfMBgr74VA4vLIcu011CENQiZeAJ0f1rGpQgQErIjtl_33J5m5vqJwS5zaxXTMYAHLgujLEMNHxDpUqzAA5r7_Zs0zaZrTBARMB8R3o90mjWZ9CxQbWn4PN_RAK-MmDaSvttShkREmzxA5hjIcx1FpL_ra6cP8pMv9KMaUCpqdsHWRD8i1CMAQjTzdR0-_aqEh44PwSH-BRxrEpq5BEg5hBEuPxoXAxXrVMR7QX1_XuwLS4mUA" charset="UTF-8"></script><style>
 * { box-sizing: border-box; margin: 0; padding: 0; }
 :root {
   --main: #601F6B; --main-mid: #7D3089; --main-light: #EAD5ED; --main-pale: #F7EFF8;
   --accent: #C47FCC; --accent-light: #F2E0F5; --rose: #E4A8D0; --rose-pale: #FDF2F8;
   --text: #3A1040; --text-muted: #A076AA; --border: #E2C8E8; --white: #FEFAFF;
 }
-
-body { font-family: 'Raleway', sans-serif; background: var(--main-pale); color: var(--text); }
+body { font-family: 'Raleway', sans-serif; background: var(--main-pale); color: var(--text); min-height: 100vh; }
 .app { max-width: 680px; margin: 0 auto; background: var(--white); min-height: 100vh; box-shadow: 0 0 40px rgba(96,31,107,0.08); }
 
 header { background: var(--main); padding: 32px 32px 28px; position: relative; overflow: hidden; }
@@ -17,12 +20,10 @@ header::before { content:''; position:absolute; top:-40px; right:-30px; width:16
 header::after { content:''; position:absolute; bottom:-25px; left:50px; width:90px; height:90px; border-radius:50%; background:rgba(255,255,255,0.05); }
 header h1 { font-family:'Cormorant Garamond',serif; font-size:30px; color:#fff; font-weight:500; font-style:italic; position:relative; z-index:1; }
 header p { font-size:10px; color:rgba(255,255,255,0.65); margin-top:6px; font-weight:500; letter-spacing:2.5px; text-transform:uppercase; position:relative; z-index:1; }
-
 .access-btn { position:absolute; top:22px; right:24px; z-index:2; background:rgba(255,255,255,0.15); border:1px solid rgba(255,255,255,0.3); color:rgba(255,255,255,0.9); font-size:9px; font-family:'Raleway',sans-serif; font-weight:700; padding:7px 14px; border-radius:20px; cursor:pointer; letter-spacing:1px; text-transform:uppercase; transition:all 0.2s; }
 .access-btn:hover { background:rgba(255,255,255,0.25); }
 
 .counter-bar { background:var(--main-light); border-bottom:1px solid var(--border); padding:11px 32px; font-size:12px; color:var(--main); display:flex; align-items:center; gap:8px; font-weight:700; }
-
 .notice { background:#FFF8E1; border-bottom:1px solid #FFE082; padding:10px 32px; font-size:11px; color:#7B6000; display:flex; align-items:center; gap:8px; font-weight:600; line-height:1.4; }
 
 .form-body { padding:30px 32px; }
@@ -65,56 +66,56 @@ textarea { resize:none; height:90px; line-height:1.6; }
 
 .save-btn { width:100%; padding:16px; font-family:'Raleway',sans-serif; font-size:14px; font-weight:700; color:#fff; border:none; border-radius:14px; cursor:pointer; background:var(--main); letter-spacing:0.5px; transition:all 0.2s; margin-top:4px; }
 .save-btn:hover { background:var(--main-mid); transform:translateY(-1px); box-shadow:0 6px 20px rgba(96,31,107,0.25); }
+.save-btn:active { transform:translateY(0); }
+
+.success-banner { display:none; background:#EAF7EE; border:1.5px solid #A8D5B5; border-radius:14px; padding:18px 20px; margin-top:16px; text-align:center; }
+.success-banner p { font-size:14px; font-weight:700; color:#1D6F42; }
+.success-banner span { font-size:12px; color:#4A9A6A; font-weight:500; }
 
 .toast { position:fixed; bottom:24px; left:50%; transform:translateX(-50%); background:var(--main); color:#fff; padding:13px 26px; border-radius:24px; font-family:'Raleway',sans-serif; font-size:13px; font-weight:700; opacity:0; transition:opacity 0.3s; pointer-events:none; z-index:200; white-space:nowrap; box-shadow:0 4px 16px rgba(96,31,107,0.3); }
 .toast.show { opacity:1; }
 
 /* MODAL */
-.modal-overlay { position:fixed; inset:0; background:rgba(58,16,64,0.45); display:flex; align-items:center; justify-content:center; z-index:100; opacity:0; pointer-events:none; transition:opacity 0.2s; min-height:500px; }
+.modal-overlay { position:fixed; inset:0; background:rgba(58,16,64,0.45); display:flex; align-items:center; justify-content:center; z-index:100; opacity:0; pointer-events:none; transition:opacity 0.2s; }
 .modal-overlay.open { opacity:1; pointer-events:all; }
-.modal { background:var(--white); border-radius:22px; padding:30px; width:90%; max-width:580px; transform:translateY(14px); transition:transform 0.22s; border:1.5px solid var(--border); max-height:85vh; overflow-y:auto; }
+.modal { background:var(--white); border-radius:22px; padding:30px; width:92%; max-width:600px; transform:translateY(14px); transition:transform 0.22s; border:1.5px solid var(--border); max-height:88vh; overflow-y:auto; }
 .modal-overlay.open .modal { transform:translateY(0); }
-.modal h2 { font-family:'Cormorant Garamond',serif; font-size:22px; margin-bottom:6px; font-style:italic; color:var(--text); }
-.modal p.sub { font-size:12px; color:var(--text-muted); margin-bottom:20px; font-weight:500; line-height:1.5; }
-.modal select { margin-bottom:16px; }
-.modal-btns { display:flex; gap:10px; margin-top:6px; }
-.modal-btns button { flex:1; padding:13px; border-radius:12px; font-family:'Raleway',sans-serif; font-size:13px; font-weight:700; cursor:pointer; transition:all 0.18s; }
-.btn-cancel { background:#fff; border:2px solid var(--border); color:var(--text-muted); }
-.btn-cancel:hover { border-color:var(--accent); color:var(--main); }
-.btn-primary { background:var(--main); border:none; color:#fff; }
-.btn-primary:hover { background:var(--main-mid); }
-.btn-primary:disabled { background:var(--border); color:var(--text-muted); cursor:not-allowed; }
-.btn-excel { background:#1D6F42; border:none; color:#fff; }
-.btn-excel:hover { background:#155232; }
+.modal h2 { font-family:'Cormorant Garamond',serif; font-size:24px; margin-bottom:5px; font-style:italic; color:var(--text); }
+.modal .sub { font-size:12px; color:var(--text-muted); margin-bottom:18px; font-weight:500; line-height:1.5; }
+.modal select { margin-bottom:14px; }
 
-/* PANEL DIRECTIVO */
-.panel-section { margin-bottom:24px; }
-.panel-section h3 { font-family:'Cormorant Garamond',serif; font-size:17px; font-style:italic; color:var(--text); margin-bottom:14px; }
-.stats-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:10px; margin-bottom:16px; }
+.stats-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:10px; margin-bottom:20px; }
 .stat-card { background:var(--main-pale); border-radius:12px; padding:14px; text-align:center; }
-.stat-num { font-size:26px; font-weight:700; color:var(--main); line-height:1; }
-.stat-label { font-size:10px; color:var(--text-muted); margin-top:4px; font-weight:600; letter-spacing:0.5px; text-transform:uppercase; }
+.stat-num { font-size:28px; font-weight:700; color:var(--main); line-height:1; }
+.stat-label { font-size:9px; color:var(--text-muted); margin-top:4px; font-weight:700; letter-spacing:0.8px; text-transform:uppercase; }
+
+.section-title { font-family:'Cormorant Garamond',serif; font-size:17px; font-style:italic; color:var(--text); margin:18px 0 12px; }
 
 .mini-table { width:100%; border-collapse:collapse; font-size:11px; }
 .mini-table th { background:var(--main-pale); text-align:left; padding:9px 10px; font-weight:700; color:var(--accent); font-size:9px; text-transform:uppercase; letter-spacing:1px; border-bottom:1px solid var(--border); }
 .mini-table td { padding:9px 10px; border-bottom:1px solid var(--border); color:var(--text); vertical-align:top; font-weight:500; }
 .mini-table tr:last-child td { border-bottom:none; }
+.mini-table tr:hover td { background:var(--main-pale); }
 
 .pill { display:inline-block; padding:2px 9px; border-radius:20px; font-size:10px; font-weight:700; }
 .pill-main { background:var(--main-light); color:var(--main); }
 .pill-rose { background:var(--accent-light); color:var(--main-mid); }
-.pill-green { background:#D4EDDA; color:#155724; }
 
-.empty-state { text-align:center; padding:30px; color:var(--text-muted); font-size:13px; font-weight:500; }
+.btn-row { display:flex; gap:10px; margin-top:20px; }
+.btn-row button { flex:1; padding:13px; border-radius:12px; font-family:'Raleway',sans-serif; font-size:13px; font-weight:700; cursor:pointer; transition:all 0.18s; }
+.btn-cancel { background:#fff; border:2px solid var(--border); color:var(--text-muted); }
+.btn-cancel:hover { border-color:var(--accent); color:var(--main); }
+.btn-csv { background:#1D6F42; border:none; color:#fff; }
+.btn-csv:hover { background:#155232; }
+.btn-access { background:var(--main); border:none; color:#fff; }
+.btn-access:hover { background:var(--main-mid); }
+.btn-access:disabled { background:var(--border); color:var(--text-muted); cursor:not-allowed; }
 
-.section-divider { height:1px; background:var(--border); margin:20px 0; }
-
-.btn-row { display:flex; gap:10px; }
-.btn-row button { flex:1; }
-
-.loading-msg { text-align:center; padding:20px; color:var(--text-muted); font-size:13px; }
+.empty-state { text-align:center; padding:32px; color:var(--text-muted); font-size:13px; font-weight:500; }
+.loading { text-align:center; padding:24px; color:var(--text-muted); font-size:13px; }
 </style>
-
+</head>
+<body>
 <div class="app">
   <header>
     <button class="access-btn" onclick="openModal()">Panel Alejandra</button>
@@ -123,15 +124,16 @@ textarea { resize:none; height:90px; line-height:1.6; }
   </header>
 
   <div class="notice">
-    📋 Las evaluaciones se guardan automáticamente en la nube. Alejandra puede verlas y descargarlas cuando todas hayan terminado.
+    📋 Las evaluaciones se guardan automáticamente. Alejandra puede ver y descargar todo cuando estén listas.
   </div>
 
   <div class="counter-bar">
     <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><circle cx="7" cy="7" r="6" stroke="#601F6B" stroke-width="1.5"/><path d="M7 4v3.5l2 1.5" stroke="#601F6B" stroke-width="1.5" stroke-linecap="round"/></svg>
-    <span id="counterText">Cargando evaluaciones…</span>
+    <span id="counterText">Cargando…</span>
   </div>
 
   <div class="form-body">
+
     <div class="step">
       <span class="step-label">Paso 1</span>
       <p class="step-title">¿De qué área eres directora?</p>
@@ -211,6 +213,11 @@ textarea { resize:none; height:90px; line-height:1.6; }
     </div>
 
     <button class="save-btn" onclick="guardar()">Guardar evaluación ✨</button>
+
+    <div class="success-banner" id="successBanner">
+      <p>¡Evaluación guardada! 💜</p>
+      <span>Puedes continuar evaluando a la siguiente asociada.</span>
+    </div>
   </div>
 </div>
 
@@ -218,36 +225,26 @@ textarea { resize:none; height:90px; line-height:1.6; }
 <div class="modal-overlay" id="modalOverlay">
   <div class="modal">
     <h2>Panel directivo</h2>
-    <p class="sub">Selecciona tu nombre para acceder al resumen completo y descarga.</p>
-    <select id="directoraSelect" onchange="verificarAcceso()">
+    <p class="sub">Solo para Alejandra Fuentes. Selecciona tu nombre para ver y descargar todas las evaluaciones.</p>
+    <select id="directoraSelect" onchange="checkAccess()">
       <option value="">Selecciona tu nombre…</option>
       <option value="alejandra">Alejandra Fuentes</option>
     </select>
 
-    <div id="panelContenido" style="display:none">
-      <div class="section-divider"></div>
-
-      <div class="panel-section">
-        <h3>Resumen del mes</h3>
-        <div class="stats-grid" id="statsGrid"></div>
-      </div>
-
-      <div class="panel-section">
-        <h3>Todas las evaluaciones</h3>
-        <div id="tablaWrapper"></div>
-      </div>
-
-      <div class="section-divider"></div>
-      <div class="btn-row">
-        <button class="modal-btns btn-cancel" style="flex:1;padding:13px;border-radius:12px;font-family:Raleway,sans-serif;font-size:13px;font-weight:700;cursor:pointer;background:#fff;border:2px solid var(--border);color:var(--text-muted);" onclick="closeModal()">Cerrar</button>
-        <button class="modal-btns btn-excel" style="flex:1;padding:13px;border-radius:12px;font-family:Raleway,sans-serif;font-size:13px;font-weight:700;cursor:pointer;background:#1D6F42;border:none;color:#fff;" onclick="descargarCSV()">Descargar Excel (CSV) ↓</button>
+    <div id="accessRow">
+      <div class="btn-row" style="margin-top:4px;">
+        <button class="btn-cancel" onclick="closeModal()">Cancelar</button>
+        <button class="btn-access" id="btnAcceder" onclick="cargarPanel()" disabled>Ver evaluaciones</button>
       </div>
     </div>
 
-    <div id="panelCerrado">
-      <div class="modal-btns" style="display:flex;gap:10px;margin-top:4px;">
-        <button style="flex:1;padding:13px;border-radius:12px;font-family:Raleway,sans-serif;font-size:13px;font-weight:700;cursor:pointer;background:#fff;border:2px solid var(--border);color:var(--text-muted);" onclick="closeModal()">Cancelar</button>
-        <button id="btnAcceder" style="flex:1;padding:13px;border-radius:12px;font-family:Raleway,sans-serif;font-size:13px;font-weight:700;cursor:pointer;background:var(--border);color:var(--text-muted);border:none;" disabled>Acceder</button>
+    <div id="panelData" style="display:none;">
+      <div class="stats-grid" id="statsGrid"></div>
+      <p class="section-title">Todas las evaluaciones</p>
+      <div id="tablaWrapper"><div class="loading">Cargando…</div></div>
+      <div class="btn-row">
+        <button class="btn-cancel" onclick="closeModal()">Cerrar</button>
+        <button class="btn-csv" onclick="descargarCSV()">⬇ Descargar CSV para Excel</button>
       </div>
     </div>
   </div>
@@ -255,188 +252,157 @@ textarea { resize:none; height:90px; line-height:1.6; }
 
 <div class="toast" id="toast"></div>
 
+
 <script>
-let selVals = { carga: null, desempeno: null, logro: null, mejora: null };
-let totalEvals = 0;
+  const BIN_ID = "69e59ac6856a68218950bd5a";
+  const API_KEY = "$2a$10$MENXg058vLyGNjK6nrftfu9Y1UCFN2REUegodfm1O5/ElWrydskIi";
 
-async function cargarContador() {
-  try {
-    const r = await window.storage.list('sa_eval_', true);
-    totalEvals = r && r.keys ? r.keys.length : 0;
-  } catch(e) { totalEvals = 0; }
-  actualizarContador();
-}
-cargarContador();
+  let selVals = { carga: null, desempeno: null, logro: null, mejora: null };
+  let allEvals = [];
 
-function actualizarContador() {
-  const n = totalEvals;
-  document.getElementById('counterText').textContent =
-    n === 0 ? '0 evaluaciones guardadas hasta ahora'
-    : n === 1 ? '1 evaluación guardada hasta ahora'
-    : n + ' evaluaciones guardadas hasta ahora';
-}
-
-function selCard(type, el, value) {
-  selVals[type] = value;
-  const gridId = type === 'carga' ? 'cargaGrid' : 'desempenoGrid';
-  document.querySelectorAll('#' + gridId + ' .option-card').forEach(c => c.classList.remove('selected'));
-  el.classList.add('selected');
-}
-
-function selText(type, el, value) {
-  selVals[type] = value;
-  const gridId = type === 'logro' ? 'logroGrid' : 'mejoraGrid';
-  document.querySelectorAll('#' + gridId + ' .text-card').forEach(c => c.classList.remove('selected'));
-  el.classList.add('selected');
-}
-
-async function guardar() {
-  const area = document.getElementById('area').value;
-  const asociada = document.getElementById('asociada').value.trim();
-  const comentario = document.getElementById('comentario').value.trim();
-  if (!area) return showToast('Por favor selecciona un área 💜');
-  if (!asociada) return showToast('Escribe el nombre de la asociada 💜');
-  if (!selVals.carga) return showToast('Evalúa la carga del área 💜');
-  if (!selVals.desempeno) return showToast('Evalúa el desempeño 💜');
-  if (!selVals.logro) return showToast('Selecciona el logro del mes 💜');
-  if (!selVals.mejora) return showToast('Selecciona el área de mejora 💜');
-
-  const now = new Date();
-  const fecha = now.toLocaleDateString('es-PE', { day:'2-digit', month:'2-digit', year:'numeric' });
-  const hora = now.toLocaleTimeString('es-PE', { hour:'2-digit', minute:'2-digit' });
-  const id = 'sa_eval_' + Date.now();
-
-  const registro = { id, fecha, hora, area, asociada, carga: selVals.carga, desempeno: selVals.desempeno, logro: selVals.logro, mejora: selVals.mejora, comentario };
-
-  try {
-    await window.storage.set(id, JSON.stringify(registro), true);
-    totalEvals++;
+  async function cargarDatos() {
+    try {
+      const res = await fetch(`https://api.jsonbin.io/v3/b/${BIN_ID}/latest`, {
+        headers: { "X-Master-Key": API_KEY }
+      });
+      const data = await res.json();
+      allEvals = data.record.respuestas || [];
+    } catch (e) {
+      allEvals = [];
+      console.error(e);
+    }
     actualizarContador();
+  }
 
-    const savedArea = area;
+  async function guardarDatos(nuevaEvaluacion) {
+    try {
+      await cargarDatos();
+      allEvals.push(nuevaEvaluacion);
+
+      await fetch(`https://api.jsonbin.io/v3/b/${BIN_ID}`, {
+        method: "PUT",
+        headers: {
+          "Content-Type": "application/json",
+          "X-Master-Key": API_KEY
+        },
+        body: JSON.stringify({ respuestas: allEvals })
+      });
+
+    } catch (e) {
+      console.error(e);
+      showToast("Error guardando 😢");
+    }
+  }
+
+  function actualizarContador() {
+    const n = allEvals.length;
+    document.getElementById('counterText').textContent =
+      n === 0 ? '0 evaluaciones guardadas hasta ahora'
+      : n === 1 ? '1 evaluación guardada hasta ahora'
+      : n + ' evaluaciones guardadas hasta ahora';
+  }
+
+  cargarDatos();
+
+  function selCard(type, el, value) {
+    selVals[type] = value;
+    const gridId = type === 'carga' ? 'cargaGrid' : 'desempenoGrid';
+    document.querySelectorAll('#' + gridId + ' .option-card').forEach(c => c.classList.remove('selected'));
+    el.classList.add('selected');
+  }
+
+  function selText(type, el, value) {
+    selVals[type] = value;
+    const gridId = type === 'logro' ? 'logroGrid' : 'mejoraGrid';
+    document.querySelectorAll('#' + gridId + ' .text-card').forEach(c => c.classList.remove('selected'));
+    el.classList.add('selected');
+  }
+
+  async function guardar() {
+    const area = document.getElementById('area').value;
+    const asociada = document.getElementById('asociada').value.trim();
+    const comentario = document.getElementById('comentario').value.trim();
+
+    if (!area) return showToast('Por favor selecciona un área 💜');
+    if (!asociada) return showToast('Escribe el nombre 💜');
+    if (!selVals.carga) return showToast('Evalúa la carga 💜');
+    if (!selVals.desempeno) return showToast('Evalúa el desempeño 💜');
+    if (!selVals.logro) return showToast('Selecciona logro 💜');
+    if (!selVals.mejora) return showToast('Selecciona mejora 💜');
+
+    const now = new Date();
+
+    const nuevaEvaluacion = {
+      fecha: now.toLocaleDateString('es-PE'),
+      hora: now.toLocaleTimeString('es-PE'),
+      area,
+      asociada,
+      carga: selVals.carga,
+      desempeno: selVals.desempeno,
+      logro: selVals.logro,
+      mejora: selVals.mejora,
+      comentario
+    };
+
+    await guardarDatos(nuevaEvaluacion);
+    await cargarDatos();
+
     document.getElementById('asociada').value = '';
     document.getElementById('comentario').value = '';
     document.querySelectorAll('.option-card, .text-card').forEach(c => c.classList.remove('selected'));
     selVals = { carga: null, desempeno: null, logro: null, mejora: null };
-    document.getElementById('area').value = savedArea;
-    showToast('¡Evaluación guardada en la nube! ✨');
-  } catch(e) {
-    showToast('Error al guardar. Intenta de nuevo.');
+
+    document.getElementById('successBanner').style.display = 'block';
+    setTimeout(() => document.getElementById('successBanner').style.display = 'none', 3000);
   }
-}
 
-function verificarAcceso() {
-  const val = document.getElementById('directoraSelect').value;
-  const btnAcceder = document.getElementById('btnAcceder');
-  if (val === 'alejandra') {
-    btnAcceder.disabled = false;
-    btnAcceder.style.background = 'var(--main)';
-    btnAcceder.style.color = '#fff';
-    btnAcceder.onclick = abrirPanel;
-  } else {
-    btnAcceder.disabled = true;
-    btnAcceder.style.background = 'var(--border)';
-    btnAcceder.style.color = 'var(--text-muted)';
+  function checkAccess() {
+    const val = document.getElementById('directoraSelect').value;
+    document.getElementById('btnAcceder').disabled = val !== 'alejandra';
   }
-}
 
-async function abrirPanel() {
-  document.getElementById('panelCerrado').style.display = 'none';
-  document.getElementById('tablaWrapper').innerHTML = '<div class="loading-msg">Cargando evaluaciones…</div>';
-  document.getElementById('panelContenido').style.display = 'block';
+  async function cargarPanel() {
+    await cargarDatos();
 
-  try {
-    const lista = await window.storage.list('sa_eval_', true);
-    const keys = lista && lista.keys ? lista.keys : [];
-    const evaluaciones = [];
+    document.getElementById('accessRow').style.display = 'none';
+    document.getElementById('panelData').style.display = 'block';
 
-    for (const key of keys) {
-      try {
-        const r = await window.storage.get(key, true);
-        if (r && r.value) evaluaciones.push(JSON.parse(r.value));
-      } catch(e) {}
+    const n = allEvals.length;
+    const areas = [...new Set(allEvals.map(e => e.area))].length;
+
+    document.getElementById('statsGrid').innerHTML = `
+      <div class="stat-card"><div class="stat-num">${n}</div><div class="stat-label">Evaluaciones</div></div>
+      <div class="stat-card"><div class="stat-num">${areas}</div><div class="stat-label">Áreas</div></div>
+      <div class="stat-card"><div class="stat-num">💜</div><div class="stat-label">Total</div></div>`;
+
+    if (!n) {
+      document.getElementById('tablaWrapper').innerHTML = 'Sin datos aún';
+      return;
     }
 
-    evaluaciones.sort((a, b) => (a.fecha + a.hora).localeCompare(b.fecha + b.hora));
-    renderStats(evaluaciones);
-    renderTabla(evaluaciones);
-    window._evaluaciones = evaluaciones;
-  } catch(e) {
-    document.getElementById('tablaWrapper').innerHTML = '<div class="empty-state">Error al cargar evaluaciones.</div>';
+    document.getElementById('tablaWrapper').innerHTML = `
+      <table class="mini-table">
+        <thead><tr>
+          <th>Fecha</th><th>Área</th><th>Nombre</th>
+        </tr></thead>
+        <tbody>
+          ${allEvals.map(e => `
+            <tr>
+              <td>${e.fecha}</td>
+              <td>${e.area}</td>
+              <td>${e.asociada}</td>
+            </tr>`).join('')}
+        </tbody>
+      </table>`;
   }
-}
 
-function renderStats(evals) {
-  const areas = [...new Set(evals.map(e => e.area))].length;
-  const grid = document.getElementById('statsGrid');
-  grid.innerHTML = `
-    <div class="stat-card"><div class="stat-num">${evals.length}</div><div class="stat-label">Evaluaciones</div></div>
-    <div class="stat-card"><div class="stat-num">${areas}</div><div class="stat-label">Áreas</div></div>
-    <div class="stat-card"><div class="stat-num">${evals.filter(e => e.desempeno === 'Lo dio todo').length}</div><div class="stat-label">Lo dieron todo</div></div>
-  `;
-}
-
-function renderTabla(evals) {
-  const wrapper = document.getElementById('tablaWrapper');
-  if (!evals.length) {
-    wrapper.innerHTML = '<div class="empty-state">Aún no hay evaluaciones guardadas.</div>';
-    return;
+  function showToast(msg) {
+    const t = document.getElementById('toast');
+    t.textContent = msg;
+    t.classList.add('show');
+    setTimeout(() => t.classList.remove('show'), 2800);
   }
-  wrapper.innerHTML = `
-    <table class="mini-table">
-      <thead>
-        <tr>
-          <th>Fecha</th><th>Área</th><th>Asociada</th><th>Carga</th><th>Desempeño</th><th>Logro</th><th>Mejora</th><th>Comentario</th>
-        </tr>
-      </thead>
-      <tbody>
-        ${evals.map(e => `
-          <tr>
-            <td>${e.fecha}<br><span style="color:var(--text-muted);font-size:10px">${e.hora}</span></td>
-            <td><span class="pill pill-main">${e.area}</span></td>
-            <td><strong>${e.asociada}</strong></td>
-            <td>${e.carga}</td>
-            <td><span class="pill pill-rose">${e.desempeno}</span></td>
-            <td>${e.logro}</td>
-            <td>${e.mejora}</td>
-            <td style="color:var(--text-muted)">${e.comentario || '—'}</td>
-          </tr>`).join('')}
-      </tbody>
-    </table>`;
-}
-
-function descargarCSV() {
-  const evals = window._evaluaciones || [];
-  if (!evals.length) { showToast('No hay evaluaciones aún'); return; }
-  const headers = ['Fecha','Hora','Área','Nombre asociada','Carga del mes','Desempeño','Logro del mes','Área de mejora','Comentario'];
-  const rows = evals.map(e =>
-    [e.fecha, e.hora, e.area, e.asociada, e.carga, e.desempeno, e.logro, e.mejora, e.comentario || '']
-      .map(v => '"' + String(v).replace(/"/g,'""') + '"').join(',')
-  );
-  const csv = [headers.join(','), ...rows].join('\n');
-  const blob = new Blob(['\uFEFF' + csv], { type: 'text/csv;charset=utf-8;' });
-  const url = URL.createObjectURL(blob);
-  const a = document.createElement('a');
-  a.href = url; a.download = 'evaluaciones_somos_amalia.csv';
-  document.body.appendChild(a); a.click();
-  document.body.removeChild(a); URL.revokeObjectURL(url);
-  showToast('¡Descargando Excel! 💜');
-}
-
-function openModal() {
-  document.getElementById('modalOverlay').classList.add('open');
-  document.getElementById('directoraSelect').value = '';
-  document.getElementById('panelContenido').style.display = 'none';
-  document.getElementById('panelCerrado').style.display = 'block';
-  const btn = document.getElementById('btnAcceder');
-  btn.disabled = true; btn.style.background = 'var(--border)'; btn.style.color = 'var(--text-muted)';
-}
-function closeModal() { document.getElementById('modalOverlay').classList.remove('open'); }
-document.getElementById('modalOverlay').addEventListener('click', function(e) { if (e.target === this) closeModal(); });
-
-function showToast(msg) {
-  const t = document.getElementById('toast');
-  t.textContent = msg; t.classList.add('show');
-  setTimeout(() => t.classList.remove('show'), 2800);
-}
 </script>
+
+</body>
+</html>
