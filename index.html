@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Evaluación Mensual — Somos Amalia</title>
 <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@300;400;500;600;700&family=Cormorant+Garamond:ital,wght@1,400;1,500&display=swap" rel="stylesheet">
-<script type="text/javascript" src="https://gc.kis.v2.scr.kaspersky-labs.com/FD126C42-EBFA-4E12-B309-BB3FDD723AC1/main.js?attr=l0OZ5QDQDdcILME0NomXMgBDyHl4TuaEIeJImfMBgr74VA4vLIcu011CENQiZeAJ0f1rGpQgQErIjtl_33J5m5vqJwS5zaxXTMYAHLgujLEMNHxDpUqzAA5r7_Zs0zaZrTBARMB8R3o90mjWZ9CxQbWn4PN_RAK-MmDaSvttShkREmzxA5hjIcx1FpL_ra6cP8pMv9KMaUCpqdsHWRD8i1CMAQjTzdR0-_aqEh44PwSH-BRxrEpq5BEg5hBEuPxoXAxXrVMR7QX1_XuwLS4mUA" charset="UTF-8"></script><style>
+<script type="text/javascript" src="https://gc.kis.v2.scr.kaspersky-labs.com/FD126C42-EBFA-4E12-B309-BB3FDD723AC1/main.js?attr=31ejAMB2o4Doteph2Bl3u1iOLJGIMPSFXTt2_zBMK6DtCmDsO-Nik8-kCcwT8nJUu05cnC0ypcS7MFtbiPjWRoy78OrKQtIy3eB7wqnH5SafQnvk9R0Vm_ImR7zxHW7XpgcwpEU8t8YkWNnZ5o-uHuB9iUIMEpWTpz2EGeOPeVH-4HEF3wUpQCh4e_xSmSDLoZvNqKWeEfeRBwP-yHSUm_GCi3cvrx2PRgxo_kgii99rEZpEgangfDwmZDM2GDIN5yNfhTohJjjWoSoT50F1Pw" charset="UTF-8"></script><style>
 * { box-sizing: border-box; margin: 0; padding: 0; }
 :root {
   --main: #601F6B; --main-mid: #7D3089; --main-light: #EAD5ED; --main-pale: #F7EFF8;
@@ -265,12 +265,23 @@ textarea { resize:none; height:90px; line-height:1.6; }
       const res = await fetch(`https://api.jsonbin.io/v3/b/${BIN_ID}/latest`, {
         headers: { "X-Master-Key": API_KEY }
       });
+
       const data = await res.json();
-      allEvals = data.record.respuestas || [];
+      console.log("JSONBIN RESPONSE:", data);
+
+      if (data && data.record && Array.isArray(data.record.respuestas)) {
+        allEvals = data.record.respuestas;
+      } else {
+        console.warn("Estructura inesperada, usando array vacío");
+        allEvals = [];
+      }
+
     } catch (e) {
+      console.error("Error cargando datos:", e);
       allEvals = [];
-      console.error(e);
+      showToast("Error cargando datos 😢");
     }
+
     actualizarContador();
   }
 
@@ -289,7 +300,7 @@ textarea { resize:none; height:90px; line-height:1.6; }
       });
 
     } catch (e) {
-      console.error(e);
+      console.error("Error guardando:", e);
       showToast("Error guardando 😢");
     }
   }
@@ -323,7 +334,7 @@ textarea { resize:none; height:90px; line-height:1.6; }
     const asociada = document.getElementById('asociada').value.trim();
     const comentario = document.getElementById('comentario').value.trim();
 
-    if (!area) return showToast('Por favor selecciona un área 💜');
+    if (!area) return showToast('Selecciona un área 💜');
     if (!asociada) return showToast('Escribe el nombre 💜');
     if (!selVals.carga) return showToast('Evalúa la carga 💜');
     if (!selVals.desempeno) return showToast('Evalúa el desempeño 💜');
@@ -376,7 +387,7 @@ textarea { resize:none; height:90px; line-height:1.6; }
       <div class="stat-card"><div class="stat-num">💜</div><div class="stat-label">Total</div></div>`;
 
     if (!n) {
-      document.getElementById('tablaWrapper').innerHTML = 'Sin datos aún';
+      document.getElementById('tablaWrapper').innerHTML = '<div class="empty-state">Sin datos aún</div>';
       return;
     }
 
